@@ -68,3 +68,10 @@ def review_detail_api_view(request, id):
 
     data = ReviewSerializer(instance=review, many=False).data
     return Response(data=data)
+
+
+@api_view(http_method_names=['GET'])
+def movie_review_list_api_view(request):
+    reviews = models.Movie.objects.prefetch_related('reviews')
+    data = MovieSerializer(instance=reviews, many=True).data
+    return Response(data=data)
