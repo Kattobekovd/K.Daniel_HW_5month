@@ -55,6 +55,7 @@ def director_detail_api_view(request, id):
 @api_view(http_method_names=['GET', 'POST'])
 def movie_list_create_api_view(request):
     if request.method == 'GET':
+        print(request.user)
         movies = models.Movie.objects.all()
 
         data = MovieSerializer(instance=movies, many=True).data
