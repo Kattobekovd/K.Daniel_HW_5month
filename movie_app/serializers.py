@@ -41,7 +41,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class MovieSerializer(serializers.ModelSerializer):
-    director = DirectorSerializer()
+    director = DirectorSerializer(read_only=True)
     reviews = ReviewSerializer(many=True, read_only=True)
     average_rating = serializers.SerializerMethodField()
 
